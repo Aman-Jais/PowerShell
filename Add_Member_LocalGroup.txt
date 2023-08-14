@@ -3,7 +3,7 @@ Add-LocalGroupMember -Group "Remote Desktop Users" -Member ""
 Get-LocalGroupMember -Group "Administrators" -> To get all members of a group
 ############################################
 
-$servers=Get-content -Path "C:\Users\EX104511\Desktop\Apps\Add-Member_localGroup.txt"
+$servers=Get-content -Path "Desktop\Apps\Add-Member_localGroup.txt"
 foreach($server in $servers)
 {
 Invoke-Command  -ComputerName $server -ScriptBlock { $hostname = hostname
