@@ -1,0 +1,26 @@
+Add-LocalGroupMember -Group "Remote Desktop Users" -Member ""
+
+Get-LocalGroupMember -Group "Administrators" -> To get all members of a group
+############################################
+
+$servers=Get-content -Path "C:\Users\EX104511\Desktop\Apps\Add-Member_localGroup.txt"
+foreach($server in $servers)
+{
+Invoke-Command  -ComputerName $server -ScriptBlock { $hostname = hostname
+Write-host -ForegroundColor Red $hostname
+Add-LocalGroupMember -Group "Administrators" -Member ""}
+} 
+
+
+############################################
+
+#Server not having PowerShell Version 5.1 - >
+
+
+Invoke-Command -ComputerName $PC -ScriptBlock{
+net localgroup Administrators <> /delete
+}
+
+
+net localgroup Administrators
+net localgroup Administrators CHOONT\svc-pdxcboot /add
